@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Quotas
+### Category3 : 
+### Description : Enumerates disk quota information (including user name, warning and quota limits, and disk space used) for each disk quota entry on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_DiskQuota")
+    say "Disk Space Used:" objItem~DiskSpaceUsed
+    say "Limit:" objItem~Limit
+    say "Quota Volume:" objItem~QuotaVolume
+    say "Status:" objItem~Status
+    say "User:" objItem~User
+    say "Warning Limit:" objItem~WarningLimit
+end

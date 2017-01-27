@@ -1,0 +1,52 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Returns a list of all the possible video display resolutions that can be configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from CIM_VideoControllerResolution")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Horizontal Resolution:" objItem~HorizontalResolution
+    say "Max Refresh Rate:" objItem~MaxRefreshRate
+    say "Min Refresh Rate:" objItem~MinRefreshRate
+    say "Number Of Colors:" objItem~NumberOfColors
+    say "Refresh Rate:" objItem~RefreshRate
+    say "Scan Mode:" objItem~ScanMode
+    say "Setting ID:" objItem~SettingID
+    say "Vertical Resolution:" objItem~VerticalResolution
+end
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Returns a list of all the possible video display resolutions that can be configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_DisplayControllerConfiguration")
+    say "Bits Per Pixel:" objItem~BitsPerPixel
+    say "Caption:" objItem~Caption
+    say "Color Planes:" objItem~ColorPlanes
+    say "Description:" objItem~Description
+    say "Device Entries In A Color Table:" objItem~DeviceEntriesInAColorTable
+    say "Device SpecificPens:" objItem~DeviceSpecificPens
+    say "Horizontal Resolution:" objItem~HorizontalResolution
+    say "Name:" objItem~Name
+    say "Refresh Rate:" objItem~RefreshRate
+    say "Reserved System Palette Entries:" objItem~ReservedSystemPaletteEntries
+    say "Setting ID:" objItem~SettingID
+    say "System Palette Entries:" objItem~SystemPaletteEntries
+    say "Vertical Resolution:" objItem~VerticalResolution
+    say "Video Mode:" objItem~VideoMode
+end

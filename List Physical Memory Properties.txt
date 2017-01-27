@@ -1,0 +1,44 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Memory
+### Category3 : 
+### Description : Returns information about the physical memory installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_PhysicalMemory")
+    say "Bank Label:" objItem~BankLabel
+    say "Capacity:" objItem~Capacity
+    say "Caption:" objItem~Caption
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Data Width:" objItem~DataWidth
+    say "Description:" objItem~Description
+    say "Device Locator:" objItem~DeviceLocator
+    say "Form Factor:" objItem~FormFactor
+    say "Hot Swappable:" objItem~HotSwappable
+    say "Install Date:" objItem~InstallDate
+    say "Interleave Data Depth:" objItem~InterleaveDataDepth
+    say "Interleave Position:" objItem~InterleavePosition
+    say "Manufacturer:" objItem~Manufacturer
+    say "Memory Type:" objItem~MemoryType
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Other Identifying Info:" objItem~OtherIdentifyingInfo
+    say "Part Number:" objItem~PartNumber
+    say "Position In Row:" objItem~PositionInRow
+    say "Powered On:" objItem~PoweredOn
+    say "Removable:" objItem~Removable
+    say "Replaceable:" objItem~Replaceable
+    say "Serial Number:" objItem~SerialNumber
+    say "SKU:" objItem~SKU
+    say "Speed:" objItem~Speed
+    say "Status:" objItem~Status
+    say "Tag:" objItem~Tag
+    say "Total Width:" objItem~TotalWidth
+    say "Type Detail:" objItem~TypeDetail
+    say "Version:" objItem~Version
+end

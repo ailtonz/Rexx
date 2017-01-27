@@ -1,0 +1,34 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about devices built into the motherboard installed in a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_OnBoardDevice")
+    say "Caption:" objItem~Caption
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "Device Type:" objItem~DeviceType
+    say "Enabled:" objItem~Enabled
+    say "Hot Swappable:" objItem~HotSwappable
+    say "Install Date:" objItem~InstallDate
+    say "Manufacturer:" objItem~Manufacturer
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Other Identifying Info:" objItem~OtherIdentifyingInfo
+    say "Part Number:" objItem~PartNumber
+    say "Powered On:" objItem~PoweredOn
+    say "Removable:" objItem~Removable
+    say "Replaceable:" objItem~Replaceable
+    say "Serial Number:" objItem~SerialNumber
+    say "SKU:" objItem~SKU
+    say "Status:" objItem~Status
+    say "Tag:" objItem~Tag
+    say "Version:" objItem~Version
+end

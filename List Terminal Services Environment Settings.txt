@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service client environment settings configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSEnvironmentSetting")
+    say "Caption:" objItem~Caption
+    say "Client WallPaper:" objItem~ClientWallPaper
+    say "Description:" objItem~Description
+    say "Initial Program Path:" objItem~InitialProgramPath
+    say "Initial Program Policy:" objItem~InitialProgramPolicy
+    say "Setting ID:" objItem~SettingID
+    say "Startin:" objItem~Startin
+    say "Terminal Name:" objItem~TerminalName
+end

@@ -1,0 +1,18 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists Terminal Services permission settings.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSPermissionsSetting")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+end

@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service logon policies configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSLogonSetting")
+    say "Caption:" objItem~Caption
+    say "Client Logon Info Policy:" objItem~ClientLogonInfoPolicy
+    say "Description:" objItem~Description
+    say "Domain:" objItem~Domain
+    say "Password:" objItem~Password
+    say "Prompt For Password:" objItem~PromptForPassword
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+    say "User Name:" objItem~UserName
+end

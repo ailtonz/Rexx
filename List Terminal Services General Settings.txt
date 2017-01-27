@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns general information about how Terminal Services has been configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSGeneralSetting")
+    say "Caption:" objItem~Caption
+    say "Comment:" objItem~Comment
+    say "Description:" objItem~Description
+    say "Min Encryption Level:" objItem~MinEncryptionLevel
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+    say "Terminal Protocol:" objItem~TerminalProtocol
+    say "Transport:" objItem~Transport
+    say "Windows Authentication:" objItem~WindowsAuthentication
+end

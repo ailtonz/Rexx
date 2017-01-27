@@ -1,0 +1,57 @@
+###
+###
+###
+### Category1 : Logs
+### Category2 : Event Logs
+### Category3 : 
+### Description : Retrieves a list of properties for all the event logs on a computer, except the Security event log.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_NTEventlogFile")
+    say "AccessMask:" objItem~AccessMask
+    say "Archive:" objItem~Archive
+    say "Caption:" objItem~Caption
+    say "Compressed:" objItem~Compressed
+    say "Compression Method:" objItem~CompressionMethod
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Creation Date:" objItem~CreationDate
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Drive:" objItem~Drive
+    say "Eight Dot Three File Name:" objItem~EightDotThreeFileName
+    say "Encrypted:" objItem~Encrypted
+    say "Encryption Method:" objItem~EncryptionMethod
+    say "Extension:" objItem~Extension
+    say "File Name:" objItem~FileName
+    say "File Size:" objItem~FileSize
+    say "File Type:" objItem~FileType
+    say "FS Creation Class Name:" objItem~FSCreationClassName
+    say "FS Name:" objItem~FSName
+    say "Hidden:" objItem~Hidden
+    say "Install Date:" objItem~InstallDate
+    say "In Use Count:" objItem~InUseCount
+    say "Last Accessed:" objItem~LastAccessed
+    say "Last Modified:" objItem~LastModified
+    say "Logfile Name:" objItem~LogfileName
+    say "Manufacturer:" objItem~Manufacturer
+    say "Max File Size:" objItem~MaxFileSize
+    say "Name:" objItem~Name
+    say "Number Of Records:" objItem~NumberOfRecords
+    say "Overwrite OutDated:" objItem~OverwriteOutDated
+    say "OverWrite Policy:" objItem~OverWritePolicy
+    say "Path:" objItem~Path
+    say "Readable:" objItem~Readable
+    z = objItem~Sources
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Status:" objItem~Status
+    say "System:" objItem~System
+    say "Version:" objItem~Version
+    say "Writeable:" objItem~Writeable
+end

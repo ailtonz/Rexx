@@ -1,0 +1,40 @@
+###
+###
+###
+### Category1 : Printing
+### Category2 : Printer Ports and Drivers
+### Category3 : 
+### Description : Lists all the printer drivers that have been installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_PrinterDriver")
+    say "Caption:" objItem~Caption
+    say "Config File:" objItem~ConfigFile
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Data File:" objItem~DataFile
+    say "Default Data Type:" objItem~DefaultDataType
+    z = objItem~DependentFiles
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Description:" objItem~Description
+    say "Driver Path:" objItem~DriverPath
+    say "File Path:" objItem~FilePath
+    say "Help File:" objItem~HelpFile
+    say "Inf Name:" objItem~InfName
+    say "Install Date:" objItem~InstallDate
+    say "Monitor Name:" objItem~MonitorName
+    say "Name:" objItem~Name
+    say "OEM Url:" objItem~OEMUrl
+    say "Started:" objItem~Started
+    say "Start Mode:" objItem~StartMode
+    say "Status:" objItem~Status
+    say "Supported Platform:" objItem~SupportedPlatform
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+    say "Version:" objItem~Version
+end

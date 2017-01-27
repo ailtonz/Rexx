@@ -1,0 +1,29 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Startup and Shutdown
+### Category3 : 
+### Description : Returns a list of settings that indicate the action to be taken by a computer should a stop event (blue screen) occur.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_OSRecoveryConfiguration")
+    say "Auto Reboot:" objItem~AutoReboot
+    say "Caption:" objItem~Caption
+    say "Debug File Path:" objItem~DebugFilePath
+    say "Debug Info Type:" objItem~DebugInfoType
+    say "Description:" objItem~Description
+    say "Expanded Debug File Path:" objItem~ExpandedDebugFilePath
+    say "Expanded MiniDump Directory:" objItem~ExpandedMiniDumpDirectory
+    say "Kernel Dump Only:" objItem~KernelDumpOnly
+    say "MiniDump Directory:" objItem~MiniDumpDirectory
+    say "Name:" objItem~Name
+    say "Overwrite Existing Debug File:" objItem~OverwriteExistingDebugFile
+    say "Send Admin Alert:" objItem~SendAdminAlert
+    say "Setting ID:" objItem~SettingID
+    say "Write Debug Info:" objItem~WriteDebugInfo
+    say "Write To System Log:" objItem~WriteToSystemLog
+end

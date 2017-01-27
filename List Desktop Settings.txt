@@ -1,0 +1,35 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Lists the current desktop settings on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Desktop")
+    say "Border Width:" objItem~BorderWidth
+    say "Caption:" objItem~Caption
+    say "Cool Switch:" objItem~CoolSwitch
+    say "Cursor Blink Rate:" objItem~CursorBlinkRate
+    say "Description:" objItem~Description
+    say "Drag Full Windows:" objItem~DragFullWindows
+    say "Grid Granularity:" objItem~GridGranularity
+    say "Icon Spacing:" objItem~IconSpacing
+    say "Icon Title Face Name:" objItem~IconTitleFaceName
+    say "Icon Title Size:" objItem~IconTitleSize
+    say "Icon Title Wrap:" objItem~IconTitleWrap
+    say "Name:" objItem~Name
+    say "Pattern:" objItem~Pattern
+    say "ScreenSaver Active:" objItem~ScreenSaverActive
+    say "ScreenSaver Executable:" objItem~ScreenSaverExecutable
+    say "ScreenSaver Secure:" objItem~ScreenSaverSecure
+    say "ScreenSaver Timeout:" objItem~ScreenSaverTimeout
+    say "Setting ID:" objItem~SettingID
+    say "Wallpaper:" objItem~Wallpaper
+    say "Wallpaper Stretched:" objItem~WallpaperStretched
+    say "Wallpaper Tiled:" objItem~WallpaperTiled
+end

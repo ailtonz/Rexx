@@ -1,0 +1,41 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Peripherals and Devices
+### Category3 : 
+### Description : Retrieves information about all the sound cards installed in a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_SoundDevice")
+    say "Availability:" objItem~Availability
+    say "Caption:" objItem~Caption
+    say "Config Manager Error Code:" objItem~ConfigManagerErrorCode
+    say "Config Manager User Config:" objItem~ConfigManagerUserConfig
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "Device ID:" objItem~DeviceID
+    say "DMA Buffer Size:" objItem~DMABufferSize
+    say "Error Cleared:" objItem~ErrorCleared
+    say "Error Description:" objItem~ErrorDescription
+    say "Install Date:" objItem~InstallDate
+    say "Last Error Code:" objItem~LastErrorCode
+    say "Manufacturer:" objItem~Manufacturer
+    say "MPU401 Address:" objItem~MPU401Address
+    say "Name:" objItem~Name
+    say "PNP Device ID:" objItem~PNPDeviceID
+    z = objItem~PowerManagementCapabilities
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Power Management Supported:" objItem~PowerManagementSupported
+    say "Product Name:" objItem~ProductName
+    say "Status:" objItem~Status
+    say "Status Info:" objItem~StatusInfo
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+end

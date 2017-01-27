@@ -1,0 +1,44 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service service.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TerminalService")
+    say "Accept Pause:" objItem~AcceptPause
+    say "Accept Stop:" objItem~AcceptStop
+    say "Caption:" objItem~Caption
+    say "CheckPoint:" objItem~CheckPoint
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "Desktop Interact:" objItem~DesktopInteract
+    say "Disconnected Sessions:" objItem~DisconnectedSessions
+    say "Display Name:" objItem~DisplayName
+    say "Error Control:" objItem~ErrorControl
+    say "Estimated Session Capacity:" objItem~EstimatedSessionCapacity
+    say "Exit Code:" objItem~ExitCode
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Path Name:" objItem~PathName
+    say "Process Id:" objItem~ProcessId
+    say "Raw Session Capacity:" objItem~RawSessionCapacity
+    say "Resource Constraint:" objItem~ResourceConstraint
+    say "Service Specific Exit Code:" objItem~ServiceSpecificExitCode
+    say "Service Type:" objItem~ServiceType
+    say "Started:" objItem~Started
+    say "Start Mode:" objItem~StartMode
+    say "Start Name:" objItem~StartName
+    say "State:" objItem~State
+    say "Status:" objItem~Status
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+    say "Tag Id:" objItem~TagId
+    say "Total Sessions:" objItem~TotalSessions
+    say "Wait Hint:" objItem~WaitHint
+end

@@ -1,0 +1,22 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Uses WMI to return information about all the environment variables on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Environment")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Status:" objItem~Status
+    say "System Variable:" objItem~SystemVariable
+    say "User Name:" objItem~UserName
+    say "Variable Value:" objItem~VariableValue
+end

@@ -1,0 +1,38 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Returns information about port connectors installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_PortConnector")
+    say "Caption:" objItem~Caption
+    say "Connector Pinout:" objItem~ConnectorPinout
+    z = objItem~ConnectorType
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "External Reference Designator:" objItem~ExternalReferenceDesignator
+    say "Install Date:" objItem~InstallDate
+    say "Internal Reference Designator:" objItem~InternalReferenceDesignator
+    say "Manufacturer:" objItem~Manufacturer
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Other Identifying Info:" objItem~OtherIdentifyingInfo
+    say "Part Number:" objItem~PartNumber
+    say "Port Type:" objItem~PortType
+    say "Powered On:" objItem~PoweredOn
+    say "Serial Number:" objItem~SerialNumber
+    say "SKU:" objItem~SKU
+    say "Status:" objItem~Status
+    say "Tag:" objItem~Tag
+    say "Version:" objItem~Version
+end

@@ -1,0 +1,67 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Retrieves an integer value indicating the chassis type for a computer (mini-tower, laptop, etc.). The script does not include a description of each value that can be returned.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_SystemEnclosure")
+    say "Audible Alarm:" objItem~AudibleAlarm
+    say "Breach Description:" objItem~BreachDescription
+    say "Cable Management Strategy:" objItem~CableManagementStrategy
+    say "Caption:" objItem~Caption
+    z = objItem~ChassisTypes
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Current Required Or Produced:" objItem~CurrentRequiredOrProduced
+    say "Depth:" objItem~Depth
+    say "Description:" objItem~Description
+    say "Heat Generation:" objItem~HeatGeneration
+    say "Height:" objItem~Height
+    say "Hot Swappable:" objItem~HotSwappable
+    say "Install Date:" objItem~InstallDate
+    say "Lock Present:" objItem~LockPresent
+    say "Manufacturer:" objItem~Manufacturer
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Number Of Power Cords:" objItem~NumberOfPowerCords
+    say "Other Identifying Info:" objItem~OtherIdentifyingInfo
+    say "Part Number:" objItem~PartNumber
+    say "Powered On:" objItem~PoweredOn
+    say "Removable:" objItem~Removable
+    say "Replaceable:" objItem~Replaceable
+    say "Security Breach:" objItem~SecurityBreach
+    say "Security Status:" objItem~SecurityStatus
+    say "Serial Number:" objItem~SerialNumber
+    z = objItem~ServiceDescriptions
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~ServicePhilosophy
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "SKU:" objItem~SKU
+    say "SMBIOS Asset Tag:" objItem~SMBIOSAssetTag
+    say "Status:" objItem~Status
+    say "Tag:" objItem~Tag
+    z = objItem~TypeDescriptions
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Version:" objItem~Version
+    say "Visible Alarm:" objItem~VisibleAlarm
+    say "Weight:" objItem~Weight
+    say "Width:" objItem~Width
+end

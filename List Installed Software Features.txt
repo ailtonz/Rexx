@@ -1,0 +1,27 @@
+###
+###
+###
+### Category1 : Applications
+### Category2 : User
+### Category3 : 
+### Description : Returns a list of features for all the software installed on a computer using Windows Installer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_SoftwareFeature")
+    say "Accesses:" objItem~Accesses
+    say "Attributes:" objItem~Attributes
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Identifying Number:" objItem~IdentifyingNumber
+    say "Install Date:" objItem~InstallDate
+    say "Install State:" objItem~InstallState
+    say "Last Use:" objItem~LastUse
+    say "Name:" objItem~Name
+    say "Product Name:" objItem~ProductName
+    say "Status:" objItem~Status
+    say "Vendor:" objItem~Vendor
+    say "Version:" objItem~Version
+end

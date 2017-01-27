@@ -1,0 +1,42 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Peripherals and Devices
+### Category3 : 
+### Description : Returns information about the signed plug and play drivers installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_PnPSignedDriver")
+    say "Caption:" objItem~Caption
+    say "Class Guid:" objItem~ClassGuid
+    say "Compat ID:" objItem~CompatID
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "Device Class:" objItem~DeviceClass
+    say "Device ID:" objItem~DeviceID
+    say "Device Name:" objItem~DeviceName
+    say "Dev Loader:" objItem~DevLoader
+    say "Driver Date:" objItem~DriverDate
+    say "Driver Name:" objItem~DriverName
+    say "Driver Provider Name:" objItem~DriverProviderName
+    say "Driver Version:" objItem~DriverVersion
+    say "Friendly Name:" objItem~FriendlyName
+    say "HardWare ID:" objItem~HardWareID
+    say "Inf Name:" objItem~InfName
+    say "Install Date:" objItem~InstallDate
+    say "Is Signed:" objItem~IsSigned
+    say "Location:" objItem~Location
+    say "Manufacturer:" objItem~Manufacturer
+    say "Name:" objItem~Name
+    say "PDO:" objItem~PDO
+    say "Signer:" objItem~Signer
+    say "Started:" objItem~Started
+    say "Start Mode:" objItem~StartMode
+    say "Status:" objItem~Status
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+end

@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Startup and Shutdown
+### Category3 : 
+### Description : Enumerates all startup commands on a computer, including those found in the Startup folder and those found in the Registry.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_StartupCommand")
+    say "Caption:" objItem~Caption
+    say "Command:" objItem~Command
+    say "Description:" objItem~Description
+    say "Location:" objItem~Location
+    say "Name:" objItem~Name
+    say "Setting ID:" objItem~SettingID
+    say "User:" objItem~User
+end

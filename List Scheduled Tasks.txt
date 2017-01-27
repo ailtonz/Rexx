@@ -1,0 +1,33 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Task Scheduling
+### Category3 : 
+### Description : Enumerates all the scheduled tasks on a computer. Note: WMI can only enumerate scheduled tasks created using the Win32_ScheduledJob class or the At.exe utility. It cannot enumerate tasks created using the Task Scheduler.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_ScheduledJob")
+    say "Caption:" objItem~Caption
+    say "Command:" objItem~Command
+    say "Days Of Month:" objItem~DaysOfMonth
+    say "Days Of Week:" objItem~DaysOfWeek
+    say "Description:" objItem~Description
+    say "Elapsed Time:" objItem~ElapsedTime
+    say "Install Date:" objItem~InstallDate
+    say "Interact With Desktop:" objItem~InteractWithDesktop
+    say "Job Id:" objItem~JobId
+    say "Job Status:" objItem~JobStatus
+    say "Name:" objItem~Name
+    say "Notify:" objItem~Notify
+    say "Owner:" objItem~Owner
+    say "Priority:" objItem~Priority
+    say "Run Repeatedly:" objItem~RunRepeatedly
+    say "Start Time:" objItem~StartTime
+    say "Status:" objItem~Status
+    say "Time Submitted:" objItem~TimeSubmitted
+    say "Until Time:" objItem~UntilTime
+end

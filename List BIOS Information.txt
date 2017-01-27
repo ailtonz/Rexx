@@ -1,0 +1,53 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Retrieves BIOS information for a computer, including BIOS version number and release date.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_BIOS")
+    z = objItem~BiosCharacteristics
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~BIOSVersion
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Build Number:" objItem~BuildNumber
+    say "Caption:" objItem~Caption
+    say "Code Set:" objItem~CodeSet
+    say "Current Language:" objItem~CurrentLanguage
+    say "Description:" objItem~Description
+    say "Identification Code:" objItem~IdentificationCode
+    say "Installable Languages:" objItem~InstallableLanguages
+    say "Install Date:" objItem~InstallDate
+    say "Language Edition:" objItem~LanguageEdition
+    z = objItem~ListOfLanguages
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Manufacturer:" objItem~Manufacturer
+    say "Name:" objItem~Name
+    say "Other Target OS:" objItem~OtherTargetOS
+    say "Primary BIOS:" objItem~PrimaryBIOS
+    say "Release Date:" objItem~ReleaseDate
+    say "Serial Number:" objItem~SerialNumber
+    say "SMBIOS BIOS Version:" objItem~SMBIOSBIOSVersion
+    say "SMBIOS Major Version:" objItem~SMBIOSMajorVersion
+    say "SMBIOS Minor Version:" objItem~SMBIOSMinorVersion
+    say "SMBIOS Present:" objItem~SMBIOSPresent
+    say "Software Element ID:" objItem~SoftwareElementID
+    say "Software Element State:" objItem~SoftwareElementState
+    say "Status:" objItem~Status
+    say "Target Operating System:" objItem~TargetOperatingSystem
+    say "Version:" objItem~Version
+end

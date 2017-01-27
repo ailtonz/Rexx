@@ -1,0 +1,47 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about the computer baseboard.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_BaseBoard")
+    say "Caption:" objItem~Caption
+    z = objItem~ConfigOptions
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Depth:" objItem~Depth
+    say "Description:" objItem~Description
+    say "Height:" objItem~Height
+    say "Hosting Board:" objItem~HostingBoard
+    say "Hot Swappable:" objItem~HotSwappable
+    say "Install Date:" objItem~InstallDate
+    say "Manufacturer:" objItem~Manufacturer
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Other Identifying Info:" objItem~OtherIdentifyingInfo
+    say "Part Number:" objItem~PartNumber
+    say "Powered On:" objItem~PoweredOn
+    say "Product:" objItem~Product
+    say "Removable:" objItem~Removable
+    say "Replaceable:" objItem~Replaceable
+    say "Requirements Description:" objItem~RequirementsDescription
+    say "Requires DaughterBoard:" objItem~RequiresDaughterBoard
+    say "Serial Number:" objItem~SerialNumber
+    say "SKU:" objItem~SKU
+    say "Slot Layout:" objItem~SlotLayout
+    say "Special Requirements:" objItem~SpecialRequirements
+    say "Status:" objItem~Status
+    say "Tag:" objItem~Tag
+    say "Version:" objItem~Version
+    say "Weight:" objItem~Weight
+    say "Width:" objItem~Width
+end

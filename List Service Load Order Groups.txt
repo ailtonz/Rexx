@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Services
+### Category3 : 
+### Description : Returns a list of all the service load order groups found on a computer, and well as their load order.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_LoadOrderGroup")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Driver Enabled:" objItem~DriverEnabled
+    say "Group Order:" objItem~GroupOrder
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Status:" objItem~Status
+end

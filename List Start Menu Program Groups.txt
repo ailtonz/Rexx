@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Retrieves information about all the Start menu program groups currently in use on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_ProgramGroup")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Group Name:" objItem~GroupName
+    say "Name:" objItem~Name
+    say "Setting ID:" objItem~SettingID
+    say "UserName:" objItem~UserName
+end

@@ -1,0 +1,26 @@
+###
+###
+###
+### Category1 : Applications
+### Category2 : User
+### Category3 : 
+### Description : Returns a list of software that was installed on a computer using Windows Installer. This information is then written to a text file.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Product")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Identifying Number:" objItem~IdentifyingNumber
+    say "Install Date:" objItem~InstallDate
+    say "Install Date 2:" objItem~InstallDate2
+    say "Install Location:" objItem~InstallLocation
+    say "Install State:" objItem~InstallState
+    say "Name:" objItem~Name
+    say "Package Cache:" objItem~PackageCache
+    say "SKU Number:" objItem~SKUNumber
+    say "Vendor:" objItem~Vendor
+    say "Version:" objItem~Version
+end

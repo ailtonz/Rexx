@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Other Directory Services
+### Category2 : Local Computer and NT 4 Accounts
+### Category3 : Groups
+### Description : Returns information about the groups found on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Group")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Domain:" objItem~Domain
+    say "Install Date:" objItem~InstallDate
+    say "Local Account:" objItem~LocalAccount
+    say "Name:" objItem~Name
+    say "SID:" objItem~SID
+    say "SID Type:" objItem~SIDType
+    say "Status:" objItem~Status
+end

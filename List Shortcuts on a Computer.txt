@@ -1,0 +1,48 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows and Explorer Settings
+### Category3 : 
+### Description : Uses WMI to return a list of all the shortcuts on a computer, as well as such properties as the file name, creation date, and target for each shortcut.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_ShortcutFile")
+    say "Access Mask:" objItem~AccessMask
+    say "Archive:" objItem~Archive
+    say "Caption:" objItem~Caption
+    say "Compressed:" objItem~Compressed
+    say "Compression Method:" objItem~CompressionMethod
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Creation Date:" objItem~CreationDate
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Drive:" objItem~Drive
+    say "Eight Dot Three File Name:" objItem~EightDotThreeFileName
+    say "Encrypted:" objItem~Encrypted
+    say "Encryption Method:" objItem~EncryptionMethod
+    say "Extension:" objItem~Extension
+    say "File Name:" objItem~FileName
+    say "File Size:" objItem~FileSize
+    say "File Type:" objItem~FileType
+    say "FS Creation Class Name:" objItem~FSCreationClassName
+    say "FS Name:" objItem~FSName
+    say "Hidden:" objItem~Hidden
+    say "Install Date:" objItem~InstallDate
+    say "In Use Count:" objItem~InUseCount
+    say "Last Accessed:" objItem~LastAccessed
+    say "Last Modified:" objItem~LastModified
+    say "Manufacturer:" objItem~Manufacturer
+    say "Name:" objItem~Name
+    say "Path:" objItem~Path
+    say "Readable:" objItem~Readable
+    say "Status:" objItem~Status
+    say "System:" objItem~System
+    say "Target:" objItem~Target
+    say "Version:" objItem~Version
+    say "Writeable:" objItem~Writeable
+end

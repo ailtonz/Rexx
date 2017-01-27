@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Quotas
+### Category3 : 
+### Description : Enumerates the disk quota settings for each drive on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_QuotaSetting")
+    say "Caption:" objItem~Caption
+    say "Default Limit:" objItem~DefaultLimit
+    say "Default Warning Limit:" objItem~DefaultWarningLimit
+    say "Description:" objItem~Description
+    say "Exceeded Notification:" objItem~ExceededNotification
+    say "Setting ID:" objItem~SettingID
+    say "State:" objItem~State
+    say "Volume Path:" objItem~VolumePath
+    say "Warning Exceeded Notification:" objItem~WarningExceededNotification
+end

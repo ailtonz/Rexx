@@ -1,0 +1,45 @@
+###
+###
+###
+### Category1 : Active Directory
+### Category2 : Domains
+### Category3 : 
+### Description : Returns information about the current Active Directory domain.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_NTDomain")
+    say "Caption:" objItem~Caption
+    say "Client Site Name:" objItem~ClientSiteName
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Dc Site Name:" objItem~DcSiteName
+    say "Description:" objItem~Description
+    say "Dns Forest Name:" objItem~DnsForestName
+    say "Domain Controller Address:" objItem~DomainControllerAddress
+    say "Domain Controller Address Type:" objItem~DomainControllerAddressType
+    say "Domain Controller Name:" objItem~DomainControllerName
+    say "Domain Guid:" objItem~DomainGuid
+    say "Domain Name:" objItem~DomainName
+    say "DS Directory Service Flag:" objItem~DSDirectoryServiceFlag
+    say "DS Dns Controller Flag:" objItem~DSDnsControllerFlag
+    say "DS Dns Domain Flag:" objItem~DSDnsDomainFlag
+    say "DS Dns Forest Flag:" objItem~DSDnsForestFlag
+    say "DS Global Catalog Flag:" objItem~DSGlobalCatalogFlag
+    say "DS Kerberos Distribution Center Flag:" objItem~DSKerberosDistributionCenterFlag
+    say "DS Primary Domain Controller Flag:" objItem~DSPrimaryDomainControllerFlag
+    say "DS Time Service Flag:" objItem~DSTimeServiceFlag
+    say "DS Writable Flag:" objItem~DSWritableFlag
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Name Format:" objItem~NameFormat
+    say "Primary Owner Contact:" objItem~PrimaryOwnerContact
+    say "Primary Owner Name:" objItem~PrimaryOwnerName
+    z = objItem~Roles
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Status:" objItem~Status
+end

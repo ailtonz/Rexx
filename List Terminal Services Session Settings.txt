@@ -1,0 +1,25 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns Terminal Service session configuration information.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSSessionSetting")
+    say "Active Session Limit:" objItem~ActiveSessionLimit
+    say "Broken Connection Action:" objItem~BrokenConnectionAction
+    say "Broken Connection Policy:" objItem~BrokenConnectionPolicy
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Disconnected Session Limit:" objItem~DisconnectedSessionLimit
+    say "Idle Session Limit:" objItem~IdleSessionLimit
+    say "Reconnection Policy:" objItem~ReconnectionPolicy
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+    say "Time Limit Policy:" objItem~TimeLimitPolicy
+end

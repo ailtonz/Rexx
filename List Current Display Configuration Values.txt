@@ -1,0 +1,29 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Video and Display
+### Category3 : 
+### Description : Returns information about the current display settings on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_DisplayConfiguration")
+    say "Bits Per Pel:" objItem~BitsPerPel
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Device Name:" objItem~DeviceName
+    say "Display Flags:" objItem~DisplayFlags
+    say "Display Frequency:" objItem~DisplayFrequency
+    say "Dither Type:" objItem~DitherType
+    say "Driver Version:" objItem~DriverVersion
+    say "ICM Intent:" objItem~ICMIntent
+    say "ICM Method:" objItem~ICMMethod
+    say "Log Pixels:" objItem~LogPixels
+    say "Pels Height:" objItem~PelsHeight
+    say "Pels Width:" objItem~PelsWidth
+    say "Setting ID:" objItem~SettingID
+    say "Specification Version:" objItem~SpecificationVersion
+end

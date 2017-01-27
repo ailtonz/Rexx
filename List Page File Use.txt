@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Page Files
+### Category3 : 
+### Description : Retrieves page file usage statistics.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_PageFileUsage")
+    say "AllocatedBaseSize:" objItem~AllocatedBaseSize
+    say "Caption:" objItem~Caption
+    say "Current Usage:" objItem~CurrentUsage
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Peak Usage:" objItem~PeakUsage
+    say "Status:" objItem~Status
+    say "Temp PageFile:" objItem~TempPageFile
+end

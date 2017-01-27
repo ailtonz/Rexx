@@ -1,0 +1,38 @@
+###
+###
+###
+### Category1 : Logs
+### Category2 : Event Logs
+### Category3 : 
+### Description : Retrieves events from the Application and System event logs.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_NTLogEvent")
+    say "Category:" objItem~Category
+    say "Category String:" objItem~CategoryString
+    say "Computer Name:" objItem~ComputerName
+    z = objItem~Data
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Event Code:" objItem~EventCode
+    say "Event Identifier:" objItem~EventIdentifier
+    say "Event Type:" objItem~EventType
+    z = objItem~InsertionStrings
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Logfile:" objItem~Logfile
+    say "Message:" objItem~Message
+    say "Record Number:" objItem~RecordNumber
+    say "Source Name:" objItem~SourceName
+    say "Time Generated:" objItem~TimeGenerated
+    say "Time Written:" objItem~TimeWritten
+    say "Type:" objItem~Type
+    say "User:" objItem~User
+end

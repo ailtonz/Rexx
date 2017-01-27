@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about all the Terminal Services accounts on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSAccount")
+    say "Account Name:" objItem~AccountName
+    say "Audit Fail:" objItem~AuditFail
+    say "Audit Success:" objItem~AuditSuccess
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Permissions Allowed:" objItem~PermissionsAllowed
+    say "Permissions Denied:" objItem~PermissionsDenied
+    say "Setting ID:" objItem~SettingID
+    say "SID:" objItem~SID
+    say "Terminal Name:" objItem~TerminalName
+end

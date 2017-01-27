@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists the network adapters that can be configured for Terminal Services.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSNetworkAdapterListSetting")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Network Adapter ID:" objItem~NetworkAdapterID
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+    say "Terminal Protocol:" objItem~TerminalProtocol
+    say "Transport:" objItem~Transport
+end

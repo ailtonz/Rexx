@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Applications
+### Category2 : User
+### Category3 : 
+### Description : Returns the name and product code of binary information (such as bitmaps, icons, executable files, and so on) used by a Windows Installer application.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Binary")
+    say "Caption:" objItem~Caption
+    say "Data:" objItem~Data
+    say "Description:" objItem~Description
+    say "Name:" objItem~Name
+    say "Product Code:" objItem~ProductCode
+    say "Setting ID:" objItem~SettingID
+end

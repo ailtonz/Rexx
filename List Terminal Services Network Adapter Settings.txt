@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists Terminal Services network adapter settings, including the maximum number of connections allowed.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSNetworkAdapterSetting")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Maximum Connections:" objItem~MaximumConnections
+    say "Network Adapter ID:" objItem~NetworkAdapterID
+    say "Network Adapter Name:" objItem~NetworkAdapterName
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+end

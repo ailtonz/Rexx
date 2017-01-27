@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Monitoring
+### Category3 : 
+### Description : Returns proxy and NNTP information for a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from NetDiagnostics")
+    say "bIE Proxy:" objItem~bIEProxy
+    say "id:" objItem~id
+    say "IE Proxy:" objItem~IEProxy
+    say "IE Proxy Port:" objItem~IEProxyPort
+    say "News NNTP Port:" objItem~NewsNNTPPort
+    say "News Server:" objItem~NewsServer
+end

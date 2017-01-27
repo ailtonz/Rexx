@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about Terminal Service remote control as configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSRemoteControlSetting")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "LevelOfControl:" objItem~LevelOfControl
+    say "RemoteControlPolicy:" objItem~RemoteControlPolicy
+    say "SettingID:" objItem~SettingID
+    say "TerminalName:" objItem~TerminalName
+end

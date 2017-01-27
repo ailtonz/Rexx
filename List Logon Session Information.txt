@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Logon Sessions
+### Category3 : 
+### Description : Returns information about logon sessions associated with the user currently logged on to a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_LogonSession")
+    say "Authentication Package:" objItem~AuthenticationPackage
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Logon Id:" objItem~LogonId
+    say "Logon Type:" objItem~LogonType
+    say "Name:" objItem~Name
+    say "Start Time:" objItem~StartTime
+    say "Status:" objItem~Status
+end

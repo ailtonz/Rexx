@@ -1,0 +1,18 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Disk Drives and Volumes
+### Category3 : Physical and Logical Disks
+### Description : Lists information about how Autochk has been configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_AutochkSetting")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Setting ID:" objItem~SettingID
+    say "User Input Delay:" objItem~UserInputDelay
+end

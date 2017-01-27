@@ -1,0 +1,32 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Returns information about the IP route tables configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_IP4RouteTable")
+    say "Age:" objItem~Age
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Destination:" objItem~Destination
+    say "Information:" objItem~Information
+    say "Install Date:" objItem~InstallDate
+    say "Interface Index:" objItem~InterfaceIndex
+    say "Mask:" objItem~Mask
+    say "Metric 1:" objItem~Metric1
+    say "Metric 2:" objItem~Metric2
+    say "Metric 3:" objItem~Metric3
+    say "Metric 4:" objItem~Metric4
+    say "Metric 5:" objItem~Metric5
+    say "Name:" objItem~Name
+    say "Next Hop:" objItem~NextHop
+    say "Protocol:" objItem~Protocol
+    say "Status:" objItem~Status
+    say "Type:" objItem~Type
+end

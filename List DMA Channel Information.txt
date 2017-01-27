@@ -1,0 +1,37 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Memory
+### Category3 : 
+### Description : Returns information about the configuration of DMA channels on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_DMAChannel")
+    say "Address Size:" objItem~AddressSize
+    say "Availability:" objItem~Availability
+    say "Burst Mode:" objItem~BurstMode
+    say "Byte Mode:" objItem~ByteMode
+    say "Caption:" objItem~Caption
+    say "Channel Timing:" objItem~ChannelTiming
+    say "Creation Class Name:" objItem~CreationClassName
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "DMA Channel:" objItem~DMAChannel
+    say "Install Date:" objItem~InstallDate
+    say "Max Transfer Size:" objItem~MaxTransferSize
+    say "Name:" objItem~Name
+    say "Port:" objItem~Port
+    say "Status:" objItem~Status
+    z = objItem~TransferWidths
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Type C Timing:" objItem~TypeCTiming
+    say "Word Mode:" objItem~WordMode
+end

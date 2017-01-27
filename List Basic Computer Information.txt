@@ -1,0 +1,96 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns basic hardware and configuration information about a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_ComputerSystem")
+    say "Admin Password Status:" objItem~AdminPasswordStatus
+    say "Automatic Reset Boot Option:" objItem~AutomaticResetBootOption
+    say "Automatic Reset Capability:" objItem~AutomaticResetCapability
+    say "Boot Option On Limit:" objItem~BootOptionOnLimit
+    say "Boot Option On WatchDog:" objItem~BootOptionOnWatchDog
+    say "Boot ROM Supported:" objItem~BootROMSupported
+    say "Bootup State:" objItem~BootupState
+    say "Caption:" objItem~Caption
+    say "Chassis Bootup State:" objItem~ChassisBootupState
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Current Time Zone:" objItem~CurrentTimeZone
+    say "Daylight In Effect:" objItem~DaylightInEffect
+    say "Description:" objItem~Description
+    say "Domain:" objItem~Domain
+    say "Domain Role:" objItem~DomainRole
+    say "Enable Daylight Savings Time:" objItem~EnableDaylightSavingsTime
+    say "Front Panel Reset Status:" objItem~FrontPanelResetStatus
+    say "Infrared Supported:" objItem~InfraredSupported
+    z = objItem~InitialLoadInfo
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Install Date:" objItem~InstallDate
+    say "Keyboard Password Status:" objItem~KeyboardPasswordStatus
+    say "Last Load Info:" objItem~LastLoadInfo
+    say "Manufacturer:" objItem~Manufacturer
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Name Format:" objItem~NameFormat
+    say "Network Server Mode Enabled:" objItem~NetworkServerModeEnabled
+    say "Number Of Processors:" objItem~NumberOfProcessors
+    z = objItem~OEMLogoBitmap
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~OEMStringArray
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Part Of Domain:" objItem~PartOfDomain
+    say "Pause After Reset:" objItem~PauseAfterReset
+    z = objItem~PowerManagementCapabilities
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Power Management Supported:" objItem~PowerManagementSupported
+    say "PowerOn Password Status:" objItem~PowerOnPasswordStatus
+    say "Power State:" objItem~PowerState
+    say "Power Supply State:" objItem~PowerSupplyState
+    say "Primary Owner Contact:" objItem~PrimaryOwnerContact
+    say "Primary Owner Name:" objItem~PrimaryOwnerName
+    say "Reset Capability:" objItem~ResetCapability
+    say "Reset Count:" objItem~ResetCount
+    say "Reset Limit:" objItem~ResetLimit
+    z = objItem~Roles
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Status:" objItem~Status
+    z = objItem~SupportContactDescription
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "System Startup Delay:" objItem~SystemStartupDelay
+    z = objItem~SystemStartupOptions
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "System Startup Setting:" objItem~SystemStartupSetting
+    say "System Type:" objItem~SystemType
+    say "Thermal State:" objItem~ThermalState
+    say "Total Physical Memory:" objItem~TotalPhysicalMemory
+    say "User Name:" objItem~UserName
+    say "WakeUp Type:" objItem~WakeUpType
+    say "Workgroup:" objItem~Workgroup
+end

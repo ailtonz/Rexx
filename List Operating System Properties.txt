@@ -1,0 +1,71 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Version Information
+### Category3 : 
+### Description : Retrieves information about the operating system installed on a computer, including language, encryption level, and build number.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_OperatingSystem")
+    say "Boot Device:" objItem~BootDevice
+    say "Build Number:" objItem~BuildNumber
+    say "Build Type:" objItem~BuildType
+    say "Caption:" objItem~Caption
+    say "Code Set:" objItem~CodeSet
+    say "Country Code:" objItem~CountryCode
+    say "Creation Class Name:" objItem~CreationClassName
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CSD Version:" objItem~CSDVersion
+    say "CS Name:" objItem~CSName
+    say "Current Time Zone:" objItem~CurrentTimeZone
+    say "Debug:" objItem~Debug
+    say "Description:" objItem~Description
+    say "Distributed:" objItem~Distributed
+    say "Encryption Level:" objItem~EncryptionLevel
+    say "Foreground Application Boost:" objItem~ForegroundApplicationBoost
+    say "Free Physical Memory:" objItem~FreePhysicalMemory
+    say "Free Space In Paging Files:" objItem~FreeSpaceInPagingFiles
+    say "Free Virtual Memory:" objItem~FreeVirtualMemory
+    say "Install Date:" objItem~InstallDate
+    say "Large System Cache:" objItem~LargeSystemCache
+    say "Last BootUp Time:" objItem~LastBootUpTime
+    say "Local Date Time:" objItem~LocalDateTime
+    say "Locale:" objItem~Locale
+    say "Manufacturer:" objItem~Manufacturer
+    say "Max Number Of Processes:" objItem~MaxNumberOfProcesses
+    say "Max Process Memory Size:" objItem~MaxProcessMemorySize
+    say "Name:" objItem~Name
+    say "Number O fLicensed Users:" objItem~NumberOfLicensedUsers
+    say "Number Of Processes:" objItem~NumberOfProcesses
+    say "Number Of Users:" objItem~NumberOfUsers
+    say "Organization:" objItem~Organization
+    say "OS Language:" objItem~OSLanguage
+    say "OS Product Suite:" objItem~OSProductSuite
+    say "OS Type:" objItem~OSType
+    say "Other Type Description:" objItem~OtherTypeDescription
+    say "Plus Product ID:" objItem~PlusProductID
+    say "Plus Version Number:" objItem~PlusVersionNumber
+    say "Primary:" objItem~Primary
+    say "Product Type:" objItem~ProductType
+    say "Quantum Length:" objItem~QuantumLength
+    say "Quantum Type:" objItem~QuantumType
+    say "Registered User:" objItem~RegisteredUser
+    say "Serial Number:" objItem~SerialNumber
+    say "Service Pack Major Version:" objItem~ServicePackMajorVersion
+    say "Service Pack Minor Version:" objItem~ServicePackMinorVersion
+    say "Size Stored In Paging Files:" objItem~SizeStoredInPagingFiles
+    say "Status:" objItem~Status
+    say "Suite Mask:" objItem~SuiteMask
+    say "System Device:" objItem~SystemDevice
+    say "System Directory:" objItem~SystemDirectory
+    say "System Drive:" objItem~SystemDrive
+    say "Total Swap Space Size:" objItem~TotalSwapSpaceSize
+    say "Total Virtual Memory Size:" objItem~TotalVirtualMemorySize
+    say "Total Visible Memory Size:" objItem~TotalVisibleMemorySize
+    say "Version:" objItem~Version
+    say "Windows Directory:" objItem~WindowsDirectory
+end

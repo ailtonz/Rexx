@@ -1,0 +1,25 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Memory
+### Category3 : 
+### Description : Returns starting and ending memory addresses for all devices installed in a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_DeviceMemoryAddress")
+    say "Caption:" objItem~Caption
+    say "Creation Class Name:" objItem~CreationClassName
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Ending Address:" objItem~EndingAddress
+    say "Install Date:" objItem~InstallDate
+    say "Memory Type:" objItem~MemoryType
+    say "Name:" objItem~Name
+    say "Starting Address:" objItem~StartingAddress
+    say "Status:" objItem~Status
+end

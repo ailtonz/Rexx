@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Page Files
+### Category3 : 
+### Description : Returns information about the initial and maximum sizes of all the page files on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_PageFileSetting")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Initial Size:" objItem~InitialSize
+    say "Maximum Size:" objItem~MaximumSize
+    say "Name:" objItem~Name
+    say "Setting ID:" objItem~SettingID
+end

@@ -1,0 +1,30 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns information about the Terminal Service client settings and policies configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TSClientSetting")
+    say "Audio Mapping:" objItem~AudioMapping
+    say "Caption:" objItem~Caption
+    say "Clipboard Mapping:" objItem~ClipboardMapping
+    say "Color Depth:" objItem~ColorDepth
+    say "Color Depth Policy:" objItem~ColorDepthPolicy
+    say "COM Port Mapping:" objItem~COMPortMapping
+    say "Connect Client Drives At Logon:" objItem~ConnectClientDrivesAtLogon
+    say "Connection Policy:" objItem~ConnectionPolicy
+    say "Connect Printer At Logon:" objItem~ConnectPrinterAtLogon
+    say "Default To Client Printer:" objItem~DefaultToClientPrinter
+    say "Description:" objItem~Description
+    say "Drive Mapping:" objItem~DriveMapping
+    say "LPT Port Mapping:" objItem~LPTPortMapping
+    say "Setting ID:" objItem~SettingID
+    say "Terminal Name:" objItem~TerminalName
+    say "Windows Printer Mapping:" objItem~WindowsPrinterMapping
+end

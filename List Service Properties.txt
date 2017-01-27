@@ -1,0 +1,39 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Services
+### Category3 : 
+### Description : Retrieves a complete list of services and their associated properties. Information is saved to a text file: C:\Scripts\Service_List.cs.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Service")
+    say "Accept Pause:" objItem~AcceptPause
+    say "Accept Stop:" objItem~AcceptStop
+    say "Caption:" objItem~Caption
+    say "Check Point:" objItem~CheckPoint
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "Desktop Interact:" objItem~DesktopInteract
+    say "Display Name:" objItem~DisplayName
+    say "Error Control:" objItem~ErrorControl
+    say "Exit Code:" objItem~ExitCode
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Path Name:" objItem~PathName
+    say "Process Id:" objItem~ProcessId
+    say "Service Specific Exit Code:" objItem~ServiceSpecificExitCode
+    say "ServiceT ype:" objItem~ServiceType
+    say "Started:" objItem~Started
+    say "Start Mode:" objItem~StartMode
+    say "Start Name:" objItem~StartName
+    say "State:" objItem~State
+    say "Status:" objItem~Status
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+    say "Tag Id:" objItem~TagId
+    say "Wait Hint:" objItem~WaitHint
+end

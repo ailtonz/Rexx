@@ -1,0 +1,118 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Lists configuration information for all the network adapters installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_NetworkAdapterConfiguration")
+    say "Arp Always Source Route:" objItem~ArpAlwaysSourceRoute
+    say "Arp Use EtherSNAP:" objItem~ArpUseEtherSNAP
+    say "Caption:" objItem~Caption
+    say "Database Path:" objItem~DatabasePath
+    say "Dead GW Detect Enabled:" objItem~DeadGWDetectEnabled
+    z = objItem~DefaultIPGateway
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Default TOS:" objItem~DefaultTOS
+    say "Default TTL:" objItem~DefaultTTL
+    say "Description:" objItem~Description
+    say "DHCP Enabled:" objItem~DHCPEnabled
+    say "DHCP Lease Expires:" objItem~DHCPLeaseExpires
+    say "DHCP Lease Obtained:" objItem~DHCPLeaseObtained
+    say "DHCP Server:" objItem~DHCPServer
+    say "DNS Domain:" objItem~DNSDomain
+    z = objItem~DNSDomainSuffixSearchOrder
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "DNS Enabled For WINS Resolution:" objItem~DNSEnabledForWINSResolution
+    say "DNS Host Name:" objItem~DNSHostName
+    z = objItem~DNSServerSearchOrder
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Domain DNS Registration Enabled:" objItem~DomainDNSRegistrationEnabled
+    say "Forward Buffer Memory:" objItem~ForwardBufferMemory
+    say "Full DNS Registration Enabled:" objItem~FullDNSRegistrationEnabled
+    z = objItem~GatewayCostMetric
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "IGMP Level:" objItem~IGMPLevel
+    say "Index:" objItem~Index
+    z = objItem~IPAddress
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "IP Connection Metric:" objItem~IPConnectionMetric
+    say "IP Enabled:" objItem~IPEnabled
+    say "IP Filter Security Enabled:" objItem~IPFilterSecurityEnabled
+    say "IP Port Security Enabled:" objItem~IPPortSecurityEnabled
+    z = objItem~IPSecPermitIPProtocols
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~IPSecPermitTCPPorts
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~IPSecPermitUDPPorts
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~IPSubnet
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "IP Use Zero Broadcast:" objItem~IPUseZeroBroadcast
+    say "IPX Address:" objItem~IPXAddress
+    say "IPX Enabled:" objItem~IPXEnabled
+    z = objItem~IPXFrameType
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "IPX Media Type:" objItem~IPXMediaType
+    z = objItem~IPXNetworkNumber
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "IPX Virtual NetNumber:" objItem~IPXVirtualNetNumber
+    say "Keep Alive Interval:" objItem~KeepAliveInterval
+    say "Keep Alive Time:" objItem~KeepAliveTime
+    say "MAC Address:" objItem~MACAddress
+    say "MTU:" objItem~MTU
+    say "Num Forward Packets:" objItem~NumForwardPackets
+    say "PMTUBH Detect Enabled:" objItem~PMTUBHDetectEnabled
+    say "PMTU Discovery Enabled:" objItem~PMTUDiscoveryEnabled
+    say "Service Name:" objItem~ServiceName
+    say "Setting ID:" objItem~SettingID
+    say "Tcpip Netbios Options:" objItem~TcpipNetbiosOptions
+    say "Tcp Max Connect Retransmissions:" objItem~TcpMaxConnectRetransmissions
+    say "Tcp Max Data Retransmissions:" objItem~TcpMaxDataRetransmissions
+    say "Tcp Num Connections:" objItem~TcpNumConnections
+    say "Tcp Use RFC1122 Urgent Pointer:" objItem~TcpUseRFC1122UrgentPointer
+    say "Tcp Window Size:" objItem~TcpWindowSize
+    say "WINS Enable LMHosts Lookup:" objItem~WINSEnableLMHostsLookup
+    say "WINS Host Lookup File:" objItem~WINSHostLookupFile
+    say "WINS Primary Server:" objItem~WINSPrimaryServer
+    say "WINS Scope ID:" objItem~WINSScopeID
+    say "WINS Secondary Server:" objItem~WINSSecondaryServer
+end

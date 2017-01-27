@@ -1,0 +1,57 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Returns information about the system slots installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_SystemSlot")
+    say "Caption:" objItem~Caption
+    say "Connector Pinout:" objItem~ConnectorPinout
+    z = objItem~ConnectorType
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Current Usage:" objItem~CurrentUsage
+    say "Description:" objItem~Description
+    say "Height Allowed:" objItem~HeightAllowed
+    say "Install Date:" objItem~InstallDate
+    say "Length Allowed:" objItem~LengthAllowed
+    say "Manufacturer:" objItem~Manufacturer
+    say "Max Data Width:" objItem~MaxDataWidth
+    say "Model:" objItem~Model
+    say "Name:" objItem~Name
+    say "Number:" objItem~Number
+    say "Other Identifying Info:" objItem~OtherIdentifyingInfo
+    say "Part Number:" objItem~PartNumber
+    say "PME Signal:" objItem~PMESignal
+    say "Powered On:" objItem~PoweredOn
+    say "Purpose Description:" objItem~PurposeDescription
+    say "Serial Number:" objItem~SerialNumber
+    say "Shared:" objItem~Shared
+    say "SKU:" objItem~SKU
+    say "Slot Designation:" objItem~SlotDesignation
+    say "Special Purpose:" objItem~SpecialPurpose
+    say "Status:" objItem~Status
+    say "Supports Hot Plug:" objItem~SupportsHotPlug
+    say "Tag:" objItem~Tag
+    say "Thermal Rating:" objItem~ThermalRating
+    z = objItem~VccMixedVoltageSupport
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Version:" objItem~Version
+    z = objItem~VppMixedVoltageSupport
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+end

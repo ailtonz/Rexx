@@ -1,0 +1,25 @@
+###
+###
+###
+### Category1 : Service Packs and Hot Fixes
+### Category2 : 
+### Category3 : 
+### Description : Returns a list of all the hot fixes installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_QuickFixEngineering")
+    say "Caption:" objItem~Caption
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Fix Comments:" objItem~FixComments
+    say "HotFix ID:" objItem~HotFixID
+    say "Install Date:" objItem~InstallDate
+    say "Installed By:" objItem~InstalledBy
+    say "Installed On:" objItem~InstalledOn
+    say "Name:" objItem~Name
+    say "Service Pack In Effect:" objItem~ServicePackInEffect
+    say "Status:" objItem~Status
+end

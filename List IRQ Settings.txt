@@ -1,0 +1,29 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Basic Hardware and Firmware
+### Category3 : 
+### Description : Returns information about the IRQ settings on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_IRQResource")
+    say "Availability:" objItem~Availability
+    say "Caption:" objItem~Caption
+    say "Creation Class Name:" objItem~CreationClassName
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Hardware:" objItem~Hardware
+    say "Install Date:" objItem~InstallDate
+    say "IRQ Number:" objItem~IRQNumber
+    say "Name:" objItem~Name
+    say "Shareable:" objItem~Shareable
+    say "Status:" objItem~Status
+    say "Trigger Level:" objItem~TriggerLevel
+    say "Trigger Type:" objItem~TriggerType
+    say "Vector:" objItem~Vector
+end

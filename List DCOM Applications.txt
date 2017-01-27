@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : COM and DCOM
+### Category3 : 
+### Description : Returns information about all the DCOM (distributed COM) applications installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_DCOMApplication")
+    say "App ID:" objItem~AppID
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Status:" objItem~Status
+end

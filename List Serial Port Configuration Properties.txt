@@ -1,0 +1,43 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Ports and Slots
+### Category3 : 
+### Description : Enumerates configuration values for all the serial ports installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_SerialPortConfiguration")
+    say "Abort Read Write On Error:" objItem~AbortReadWriteOnError
+    say "Baud Rate:" objItem~BaudRate
+    say "Binary Mode Enabled:" objItem~BinaryModeEnabled
+    say "Bits Per Byte:" objItem~BitsPerByte
+    say "Caption:" objItem~Caption
+    say "Continue XMitOn XOff:" objItem~ContinueXMitOnXOff
+    say "CTS Outflow Control:" objItem~CTSOutflowControl
+    say "Description:" objItem~Description
+    say "Discard NULL Bytes:" objItem~DiscardNULLBytes
+    say "DSR Outflow Control:" objItem~DSROutflowControl
+    say "DSR Sensitivity:" objItem~DSRSensitivity
+    say "DTR Flow Control Type:" objItem~DTRFlowControlType
+    say "EOF Character:" objItem~EOFCharacter
+    say "Error Replace Character:" objItem~ErrorReplaceCharacter
+    say "Error Replacement Enabled:" objItem~ErrorReplacementEnabled
+    say "Event Character:" objItem~EventCharacter
+    say "Is Busy:" objItem~IsBusy
+    say "Name:" objItem~Name
+    say "Parity:" objItem~Parity
+    say "Parity Check Enabled:" objItem~ParityCheckEnabled
+    say "RTS Flow Control Type:" objItem~RTSFlowControlType
+    say "Setting ID:" objItem~SettingID
+    say "Stop Bits:" objItem~StopBits
+    say "XOff Character:" objItem~XOffCharacter
+    say "XOff XMit Threshold:" objItem~XOffXMitThreshold
+    say "XOn Character:" objItem~XOnCharacter
+    say "XOn XMit Threshold:" objItem~XOnXMitThreshold
+    say "XOn XOff InFlow Control:" objItem~XOnXOffInFlowControl
+    say "XOn XOff OutFlow Control:" objItem~XOnXOffOutFlowControl
+end

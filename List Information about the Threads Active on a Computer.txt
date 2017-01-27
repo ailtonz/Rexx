@@ -1,0 +1,36 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Processes
+### Category3 : Processes and Threads
+### Description : Returns a list of threads and thread states for each process running on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Thread")
+    say "Caption:" objItem~Caption
+    say "Creation Class Name:" objItem~CreationClassName
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Elapsed Time:" objItem~ElapsedTime
+    say "Execution State:" objItem~ExecutionState
+    say "Handle:" objItem~Handle
+    say "Install Date:" objItem~InstallDate
+    say "Kernel Mode Time:" objItem~KernelModeTime
+    say "Name:" objItem~Name
+    say "OS Creation Class Name:" objItem~OSCreationClassName
+    say "OS Name:" objItem~OSName
+    say "Priority:" objItem~Priority
+    say "Priority Base:" objItem~PriorityBase
+    say "Process Creation Class Name:" objItem~ProcessCreationClassName
+    say "Process Handle:" objItem~ProcessHandle
+    say "Start Address:" objItem~StartAddress
+    say "Status:" objItem~Status
+    say "Thread State:" objItem~ThreadState
+    say "Thread Wait Reason:" objItem~ThreadWaitReason
+    say "User Mode Time:" objItem~UserModeTime
+end

@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Storage
+### Category2 : Shared Folders
+### Category3 : 
+### Description : Lists all the shared folders on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Share")
+    say "Access Mask:" objItem~AccessMask
+    say "Allow Maximum:" objItem~AllowMaximum
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Maximum Allowed:" objItem~MaximumAllowed
+    say "Name:" objItem~Name
+    say "Path:" objItem~Path
+    say "Status:" objItem~Status
+    say "Type:" objItem~Type
+end

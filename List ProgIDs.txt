@@ -1,0 +1,25 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : COM and DCOM
+### Category3 : 
+### Description : Returns a list of ProgIDs (Programmatic Identifiers) found on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_ProgIDSpecification")
+    say "Caption:" objItem~Caption
+    say "Check ID:" objItem~CheckID
+    say "Check Mode:" objItem~CheckMode
+    say "Description:" objItem~Description
+    say "Name:" objItem~Name
+    say "Parent:" objItem~Parent
+    say "ProgID:" objItem~ProgID
+    say "Software Element ID:" objItem~SoftwareElementID
+    say "Software Element State:" objItem~SoftwareElementState
+    say "Target Operating System:" objItem~TargetOperatingSystem
+    say "Version:" objItem~Version
+end

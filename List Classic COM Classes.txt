@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : COM and DCOM
+### Category3 : 
+### Description : Retrieves information about all the “classic” COM classes installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_ClassicCOMClass")
+    say "Caption:" objItem~Caption
+    say "Component Id:" objItem~ComponentId
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Status:" objItem~Status
+end

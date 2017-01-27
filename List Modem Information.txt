@@ -1,0 +1,117 @@
+###
+###
+###
+### Category1 : Hardware
+### Category2 : Peripherals and Devices
+### Category3 : 
+### Description : Retrieves information about all the modems installed in a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_POTSModem")
+    say "Answer Mode:" objItem~AnswerMode
+    say "Attached To:" objItem~AttachedTo
+    say "Availability:" objItem~Availability
+    say "Blind Off:" objItem~BlindOff
+    say "Blind On:" objItem~BlindOn
+    say "Caption:" objItem~Caption
+    say "Compatibility Flags:" objItem~CompatibilityFlags
+    say "Compression Info:" objItem~CompressionInfo
+    say "Compression Off:" objItem~CompressionOff
+    say "Compression On:" objItem~CompressionOn
+    say "Config Manager Error Code:" objItem~ConfigManagerErrorCode
+    say "Config Manager User Config:" objItem~ConfigManagerUserConfig
+    say "Configuration Dialog:" objItem~ConfigurationDialog
+    z = objItem~CountriesSupported
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Country Selected:" objItem~CountrySelected
+    say "Creation Class Name:" objItem~CreationClassName
+    z = objItem~CurrentPasswords
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~DCB
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    z = objItem~Default
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Description:" objItem~Description
+    say "Device ID:" objItem~DeviceID
+    say "Device Loader:" objItem~DeviceLoader
+    say "Device Type:" objItem~DeviceType
+    say "Dial Type:" objItem~DialType
+    say "Driver Date:" objItem~DriverDate
+    say "Error Cleared:" objItem~ErrorCleared
+    say "Error Control Forced:" objItem~ErrorControlForced
+    say "Error Control Info:" objItem~ErrorControlInfo
+    say "Error Control Off:" objItem~ErrorControlOff
+    say "Error Control On:" objItem~ErrorControlOn
+    say "Error Description:" objItem~ErrorDescription
+    say "Flow Control Hard:" objItem~FlowControlHard
+    say "Flow Control Off:" objItem~FlowControlOff
+    say "Flow Control Soft:" objItem~FlowControlSoft
+    say "InactivityScale:" objItem~InactivityScale
+    say "InactivityTimeout:" objItem~InactivityTimeout
+    say "Index:" objItem~Index
+    say "Install Date:" objItem~InstallDate
+    say "Last Error Code:" objItem~LastErrorCode
+    say "Max Baud Rate To Phone:" objItem~MaxBaudRateToPhone
+    say "Max Baud Rate To Serial Port:" objItem~MaxBaudRateToSerialPort
+    say "Max Number Of Passwords:" objItem~MaxNumberOfPasswords
+    say "Model:" objItem~Model
+    say "Modem Inf Path:" objItem~ModemInfPath
+    say "Modem Inf Section:" objItem~ModemInfSection
+    say "Modulation Bell:" objItem~ModulationBell
+    say "Modulation CCITT:" objItem~ModulationCCITT
+    say "Modulation Scheme:" objItem~ModulationScheme
+    say "Name:" objItem~Name
+    say "PNP Device ID:" objItem~PNPDeviceID
+    say "Port SubClass:" objItem~PortSubClass
+    z = objItem~PowerManagementCapabilities
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Power Management Supported:" objItem~PowerManagementSupported
+    say "Prefix:" objItem~Prefix
+    z = objItem~Properties
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Provider Name:" objItem~ProviderName
+    say "Pulse:" objItem~Pulse
+    say "Reset:" objItem~Reset
+    say "Responses Key Name:" objItem~ResponsesKeyName
+    say "Rings Before Answer:" objItem~RingsBeforeAnswer
+    say "Speaker Mode Dial:" objItem~SpeakerModeDial
+    say "Speaker Mode Off:" objItem~SpeakerModeOff
+    say "Speaker Mode On:" objItem~SpeakerModeOn
+    say "Speaker Mode Setup:" objItem~SpeakerModeSetup
+    say "Speaker Volume High:" objItem~SpeakerVolumeHigh
+    say "Speaker Volume Info:" objItem~SpeakerVolumeInfo
+    say "Speaker Volume Low:" objItem~SpeakerVolumeLow
+    say "Speaker Volume Med:" objItem~SpeakerVolumeMed
+    say "Status:" objItem~Status
+    say "Status Info:" objItem~StatusInfo
+    say "String Format:" objItem~StringFormat
+    say "Supports Callback:" objItem~SupportsCallback
+    say "Supports Synchronous Connect:" objItem~SupportsSynchronousConnect
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+    say "Terminator:" objItem~Terminator
+    say "Time Of LastReset:" objItem~TimeOfLastReset
+    say "Tone:" objItem~Tone
+    say "Voice Switch Feature:" objItem~VoiceSwitchFeature
+end

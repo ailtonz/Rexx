@@ -1,0 +1,20 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Returns information about all the network clients installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_NetworkClient")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Install Date:" objItem~InstallDate
+    say "Manufacturer:" objItem~Manufacturer
+    say "Name:" objItem~Name
+    say "Status:" objItem~Status
+end

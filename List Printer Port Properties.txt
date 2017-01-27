@@ -1,0 +1,31 @@
+###
+###
+###
+### Category1 : Printing
+### Category2 : Printer Ports and Drivers
+### Category3 : 
+### Description : Lists properties of all the TCP/IP printer ports installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TCPIPPrinterPort")
+    say "Byte Count:" objItem~ByteCount
+    say "Caption:" objItem~Caption
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Description:" objItem~Description
+    say "Host Address:" objItem~HostAddress
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Port Number:" objItem~PortNumber
+    say "Protocol:" objItem~Protocol
+    say "Queue:" objItem~Queue
+    say "SNMP Community:" objItem~SNMPCommunity
+    say "SNMP Dev Index:" objItem~SNMPDevIndex
+    say "SNMP Enabled:" objItem~SNMPEnabled
+    say "Status:" objItem~Status
+    say "System Creation Class Name:" objItem~SystemCreationClassName
+    say "System Name:" objItem~SystemName
+    say "Type:" objItem~Type
+end
