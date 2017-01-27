@@ -1,0 +1,30 @@
+###
+###
+###
+### Category1 : Other Directory Services
+### Category2 : Local Computer and NT 4 Accounts
+### Category3 : User Accounts
+### Description : Returns information about the user accounts found on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_UserAccount")
+    say "Account Type:" objItem~AccountType
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Disabled:" objItem~Disabled
+    say "Domain:" objItem~Domain
+    say "Full Name:" objItem~FullName
+    say "Install Date:" objItem~InstallDate
+    say "Local Account:" objItem~LocalAccount
+    say "Lockout:" objItem~Lockout
+    say "Name:" objItem~Name
+    say "Password Changeable:" objItem~PasswordChangeable
+    say "Password Expires:" objItem~PasswordExpires
+    say "Password Required:" objItem~PasswordRequired
+    say "SID:" objItem~SID
+    say "SID Type:" objItem~SIDType
+    say "Status:" objItem~Status
+end

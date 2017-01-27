@@ -1,0 +1,33 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Lists the Terminal Service configuration settings on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TerminalServiceSetting")
+    say "Active Desktop:" objItem~ActiveDesktop
+    say "Allow TS Connections:" objItem~AllowTSConnections
+    say "Caption:" objItem~Caption
+    say "Delete Temp Folders:" objItem~DeleteTempFolders
+    say "Description:" objItem~Description
+    say "Direct Connect License Servers:" objItem~DirectConnectLicenseServers
+    say "Help:" objItem~Help
+    say "Home Directory:" objItem~HomeDirectory
+    say "Licensing Description:" objItem~LicensingDescription
+    say "Licensing Name:" objItem~LicensingName
+    say "Licensing Type:" objItem~LicensingType
+    say "Logons:" objItem~Logons
+    say "Profile Path:" objItem~ProfilePath
+    say "Server Name:" objItem~ServerName
+    say "Setting ID:" objItem~SettingID
+    say "Single Session:" objItem~SingleSession
+    say "Terminal Server Mode:" objItem~TerminalServerMode
+    say "User Permission:" objItem~UserPermission
+    say "Use Temp Folders:" objItem~UseTempFolders
+end

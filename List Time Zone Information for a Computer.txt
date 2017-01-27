@@ -1,0 +1,38 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Dates and Times
+### Category3 : 
+### Description : Retrieve information about the time zone configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_TimeZone")
+    say "Bias:" objItem~Bias
+    say "Caption:" objItem~Caption
+    say "Daylight Bias:" objItem~DaylightBias
+    say "Daylight Day:" objItem~DaylightDay
+    say "Daylight Day Of Week:" objItem~DaylightDayOfWeek
+    say "Daylight Hour:" objItem~DaylightHour
+    say "Daylight Millisecond:" objItem~DaylightMillisecond
+    say "Daylight Minute:" objItem~DaylightMinute
+    say "Daylight Month:" objItem~DaylightMonth
+    say "Daylight Name:" objItem~DaylightName
+    say "Daylight Second:" objItem~DaylightSecond
+    say "Daylight Year:" objItem~DaylightYear
+    say "Description:" objItem~Description
+    say "Setting ID:" objItem~SettingID
+    say "Standard Bias:" objItem~StandardBias
+    say "Standard Day:" objItem~StandardDay
+    say "Standard Day Of Week:" objItem~StandardDayOfWeek
+    say "Standard Hour:" objItem~StandardHour
+    say "Standard Millisecond:" objItem~StandardMillisecond
+    say "Standard Minute:" objItem~StandardMinute
+    say "Standard Month:" objItem~StandardMonth
+    say "Standard Name:" objItem~StandardName
+    say "Standard Second:" objItem~StandardSecond
+    say "Standard Year:" objItem~StandardYear
+end

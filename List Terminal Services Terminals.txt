@@ -1,0 +1,21 @@
+###
+###
+###
+### Category1 : Terminal Services
+### Category2 : Retrieving Terminal Service Properties
+### Category3 : 
+### Description : Returns a list of all the Terminal Service terminals on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Terminal")
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "fEnable Terminal:" objItem~fEnableTerminal
+    say "Install Date:" objItem~InstallDate
+    say "Name:" objItem~Name
+    say "Status:" objItem~Status
+    say "Terminal Name:" objItem~TerminalName
+end

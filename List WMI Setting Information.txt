@@ -1,0 +1,45 @@
+###
+###
+###
+### Category1 : Scripting Techniques
+### Category2 : WMI
+### Category3 : 
+### Description : Returns information about how WMI has been configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_WMISetting")
+    say "ASP Script Default Namespace:" objItem~ASPScriptDefaultNamespace
+    say "ASP Script Enabled:" objItem~ASPScriptEnabled
+    z = objItem~AutorecoverMofs
+    if .NIL <> z then
+        do x over z
+            say objProperty.Name ": " x
+    end
+    say "Auto Start Win9X:" objItem~AutoStartWin9X
+    say "Backup Interval:" objItem~BackupInterval
+    say "Backup Last Time:" objItem~BackupLastTime
+    say "Build Version:" objItem~BuildVersion
+    say "Caption:" objItem~Caption
+    say "Database Directory:" objItem~DatabaseDirectory
+    say "Database Max Size:" objItem~DatabaseMaxSize
+    say "Description:" objItem~Description
+    say "Enable Anon Win9x Connections:" objItem~EnableAnonWin9xConnections
+    say "Enable Events:" objItem~EnableEvents
+    say "Enable Startup Heap Preallocation:" objItem~EnableStartupHeapPreallocation
+    say "High Threshold On Client Objects:" objItem~HighThresholdOnClientObjects
+    say "High Threshold On Events:" objItem~HighThresholdOnEvents
+    say "Installation Directory:" objItem~InstallationDirectory
+    say "Last Startup Heap Preallocation:" objItem~LastStartupHeapPreallocation
+    say "Logging Directory:" objItem~LoggingDirectory
+    say "Logging Level:" objItem~LoggingLevel
+    say "Low Threshold On Client Objects:" objItem~LowThresholdOnClientObjects
+    say "Low Threshold On Events:" objItem~LowThresholdOnEvents
+    say "Max Log File Size:" objItem~MaxLogFileSize
+    say "Max Wait On Client Objects:" objItem~MaxWaitOnClientObjects
+    say "Max Wait On Events:" objItem~MaxWaitOnEvents
+    say "Mof Self Install Directory:" objItem~MofSelfInstallDirectory
+    say "Setting ID:" objItem~SettingID
+end

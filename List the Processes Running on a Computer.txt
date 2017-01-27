@@ -1,0 +1,59 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Processes
+### Category3 : Processes and Threads
+### Description : Returns information about all the processes running on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_Process")
+    say "Caption:" objItem~Caption
+    say "Command Line:" objItem~CommandLine
+    say "Creation Class Name:" objItem~CreationClassName
+    say "Creation Date:" objItem~CreationDate
+    say "CS Creation Class Name:" objItem~CSCreationClassName
+    say "CS Name:" objItem~CSName
+    say "Description:" objItem~Description
+    say "Executable Path:" objItem~ExecutablePath
+    say "Execution State:" objItem~ExecutionState
+    say "Handle:" objItem~Handle
+    say "Handle Count:" objItem~HandleCount
+    say "Install Date:" objItem~InstallDate
+    say "Kernel Mode Time:" objItem~KernelModeTime
+    say "Maximum Working Set Size:" objItem~MaximumWorkingSetSize
+    say "Minimum Working Set Size:" objItem~MinimumWorkingSetSize
+    say "Name:" objItem~Name
+    say "OS Creation Class Name:" objItem~OSCreationClassName
+    say "OS Name:" objItem~OSName
+    say "Other Operation Count:" objItem~OtherOperationCount
+    say "Other Transfer Count:" objItem~OtherTransferCount
+    say "Page Faults:" objItem~PageFaults
+    say "Page File Usage:" objItem~PageFileUsage
+    say "Parent Process Id:" objItem~ParentProcessId
+    say "Peak PageFile Usage:" objItem~PeakPageFileUsage
+    say "Peak Virtual Size:" objItem~PeakVirtualSize
+    say "Peak Working Set Size:" objItem~PeakWorkingSetSize
+    say "Priority:" objItem~Priority
+    say "Private Page Count:" objItem~PrivatePageCount
+    say "Process Id:" objItem~ProcessId
+    say "Quota NonPaged Pool Usage:" objItem~QuotaNonPagedPoolUsage
+    say "Quota Paged Pool Usage:" objItem~QuotaPagedPoolUsage
+    say "Quota Peak NonPaged Pool Usage:" objItem~QuotaPeakNonPagedPoolUsage
+    say "Quota Peak Paged Pool Usage:" objItem~QuotaPeakPagedPoolUsage
+    say "Read Operation Count:" objItem~ReadOperationCount
+    say "Read Transfer Count:" objItem~ReadTransferCount
+    say "Session Id:" objItem~SessionId
+    say "Status:" objItem~Status
+    say "Termination Date:" objItem~TerminationDate
+    say "Thread Count:" objItem~ThreadCount
+    say "User Mode Time:" objItem~UserModeTime
+    say "Virtual Size:" objItem~VirtualSize
+    say "Windows Version:" objItem~WindowsVersion
+    say "Working Set Size:" objItem~WorkingSetSize
+    say "Write Operation Count:" objItem~WriteOperationCount
+    say "Write Transfer Count:" objItem~WriteTransferCount
+end

@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Startup and Shutdown
+### Category3 : 
+### Description : Returns boot configuration information for a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_BootConfiguration")
+    say "Boot Directory:" objItem~BootDirectory
+    say "Caption:" objItem~Caption
+    say "Configuration Path:" objItem~ConfigurationPath
+    say "Description:" objItem~Description
+    say "Last Drive:" objItem~LastDrive
+    say "Name:" objItem~Name
+    say "Scratch Directory:" objItem~ScratchDirectory
+    say "Setting ID:" objItem~SettingID
+    say "Temp Directory:" objItem~TempDirectory
+end

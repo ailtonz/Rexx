@@ -1,0 +1,23 @@
+###
+###
+###
+### Category1 : Desktop Management
+### Category2 : Windows Activation
+### Category3 : 
+### Description : Returns product activation information for a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_WindowsProductActivation")
+    say "Activation Required:" objItem~ActivationRequired
+    say "Caption:" objItem~Caption
+    say "Description:" objItem~Description
+    say "Is Notification On:" objItem~IsNotificationOn
+    say "Product ID:" objItem~ProductID
+    say "Remaining Evaluation Period:" objItem~RemainingEvaluationPeriod
+    say "Remaining Grace Period:" objItem~RemainingGracePeriod
+    say "Server Name:" objItem~ServerName
+    say "Setting ID:" objItem~SettingID
+end

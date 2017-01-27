@@ -1,0 +1,37 @@
+###
+###
+###
+### Category1 : Networking
+### Category2 : Client-Side Management
+### Category3 : Retrieving Network Configuration Information
+### Description : Uses WMI to return information about all the network protocols installed on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_NetworkProtocol")
+    say "Caption:" objItem~Caption
+    say "Connectionless Service:" objItem~ConnectionlessService
+    say "Description:" objItem~Description
+    say "Guarantees Delivery:" objItem~GuaranteesDelivery
+    say "Guarantees Sequencing:" objItem~GuaranteesSequencing
+    say "Install Date:" objItem~InstallDate
+    say "Maximum Address Size:" objItem~MaximumAddressSize
+    say "Maximum Message Size:" objItem~MaximumMessageSize
+    say "Message Oriented:" objItem~MessageOriented
+    say "Minimum Address Size:" objItem~MinimumAddressSize
+    say "Name:" objItem~Name
+    say "Pseudo Stream Oriented:" objItem~PseudoStreamOriented
+    say "Status:" objItem~Status
+    say "Supports Broadcasting:" objItem~SupportsBroadcasting
+    say "Supports Connect Data:" objItem~SupportsConnectData
+    say "Supports Disconnect Data:" objItem~SupportsDisconnectData
+    say "Supports Encryption:" objItem~SupportsEncryption
+    say "Supports Expedited Data:" objItem~SupportsExpeditedData
+    say "Supports Fragmentation:" objItem~SupportsFragmentation
+    say "Supports Graceful Closing:" objItem~SupportsGracefulClosing
+    say "Supports Guaranteed Bandwidth:" objItem~SupportsGuaranteedBandwidth
+    say "Supports Multicasting:" objItem~SupportsMulticasting
+    say "Supports Quality of Service:" objItem~SupportsQualityofService
+end

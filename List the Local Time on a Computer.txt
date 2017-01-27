@@ -1,0 +1,24 @@
+###
+###
+###
+### Category1 : Operating System
+### Category2 : Dates and Times
+### Category3 : 
+### Description : Returns information about the local time configured on a computer.
+###
+###
+###
+strComputer = "."
+objWMIService = .OLEObject~GetObject("winmgmts:\\"||strComputer||"\root\CIMV2")
+do objItem over objWMIService~ExecQuery("Select * from Win32_LocalTime")
+    say "Day:" objItem~Day
+    say "Day Of Week:" objItem~DayOfWeek
+    say "Hour:" objItem~Hour
+    say "Milliseconds:" objItem~Milliseconds
+    say "Minute:" objItem~Minute
+    say "Month:" objItem~Month
+    say "Quarter:" objItem~Quarter
+    say "Second:" objItem~Second
+    say "Week In Month:" objItem~WeekInMonth
+    say "Year:" objItem~Year
+end
